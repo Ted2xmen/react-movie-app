@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react'
 import MovieApi from '../features/apis/MovieApi'
 import { useDispatch } from 'react-redux'
 import { addMovie } from '../redux/movies/movieSlice'
+import UpComingMovies from './UpComingMovies'
+
 
 const AppContainer = () => {
+       
 
   const [data, setData] = useState([])
   const apiKey = process.env.REACT_APP_MOVIE
@@ -20,13 +23,15 @@ const AppContainer = () => {
       )
       dispatch(addMovie(response.data))
     }
-    fetchMovies();
+    fetchMovies()
   }, [apiKey, dispatch])
 
   return (
     <div className="mx-auto items-center justify-center pt-24 sm:h-full sm:w-full md:h-full md:w-full lg:mx-12 xl:mx-24">
       <Nav />
       <Header />
+      <UpComingMovies />
+
       {/* {data.map((item) => (
         <img src={imageRoot + item.file_path} alt="" />
       ))} */}
