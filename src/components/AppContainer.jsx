@@ -1,16 +1,19 @@
 import Nav from '../pages/Nav'
 import Header from './Header'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import MovieApi from '../features/apis/MovieApi'
 import { useDispatch } from 'react-redux'
-import { addMovie } from '../redux/movies/movieSlice'
+import {
+  addMovie,
+  upComingMovies,
+  populerMovies,
+} from '../redux/movies/movieSlice'
 import UpComingMovies from './UpComingMovies'
 
 
 const AppContainer = () => {
        
 
-  const [data, setData] = useState([])
   const apiKey = process.env.REACT_APP_MOVIE
   const imageRoot = 'https://image.tmdb.org/t/p/original'
 
@@ -21,9 +24,16 @@ const AppContainer = () => {
       const response = await MovieApi.get(
         `movie/upcoming?api_key=${apiKey}&page=1`
       )
-      dispatch(addMovie(response.data))
+      dispatch(upComingMovies(response.data))
+    }
+    const fetchNowPlaying = async () => {
+      const response = await MovieApi.get(
+        `movie/popular?api_key=${apiKey}&page=1`
+      )
+      dispatch(populerMovies(response.data))
     }
     fetchMovies()
+    fetchNowPlaying()
   }, [apiKey, dispatch])
 
   return (
