@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import MovieApi from '../features/apis/MovieApi'
 import { useDispatch } from 'react-redux'
 import {
-  addMovie,
   upComingMovies,
   populerMovies,
 } from '../redux/movies/movieSlice'
@@ -16,9 +15,7 @@ const AppContainer = () => {
        
 
   const apiKey = process.env.REACT_APP_MOVIE
-  const imageRoot = 'https://image.tmdb.org/t/p/original'
-
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -32,7 +29,6 @@ const AppContainer = () => {
         `movie/popular?api_key=${apiKey}&page=1`
       )
       dispatch(populerMovies(response.data))
-      console.log(response.data)
     }
     fetchMovies()
     fetchNowPlaying()
