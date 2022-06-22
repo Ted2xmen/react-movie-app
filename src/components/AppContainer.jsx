@@ -9,6 +9,7 @@ import {
   populerMovies,
 } from '../redux/movies/movieSlice'
 import UpComingMovies from './UpComingMovies'
+import PopularMovies from './PopularMovies'
 
 
 const AppContainer = () => {
@@ -31,6 +32,7 @@ const AppContainer = () => {
         `movie/popular?api_key=${apiKey}&page=1`
       )
       dispatch(populerMovies(response.data))
+      console.log(response.data)
     }
     fetchMovies()
     fetchNowPlaying()
@@ -41,6 +43,7 @@ const AppContainer = () => {
       <Nav />
       <Header />
       <UpComingMovies />
+      <PopularMovies />
 
       {/* {data.map((item) => (
         <img src={imageRoot + item.file_path} alt="" />
