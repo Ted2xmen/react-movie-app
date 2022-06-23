@@ -1,17 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { upcomingMovieLimit } from '../features/AppSettings'
+import UpComingCard from './cards/UpcomingCard'
 
-const UpComingMovies = () => {
 
-  const value = useSelector((state) => state.moviesReducer.upcomingmovies)
-  console.log(value)
+const UpComingMovies = ({ upcoming }) => {
+
   return (
     <div>
-      <div>Upcoming movies</div>
-      <div className="text-md gradient p-12 text-white">
-       {value?.results?.slice(0,4).map((item, i) => (
-          <li key={i}> {item.original_title} </li>
-        ))}    
+      <div className="text-md flex p-12 text-black">
+        {upcoming?.results?.slice(0, upcomingMovieLimit).map((item, i) => (
+            <UpComingCard value={item} key={i}  />
+        ))}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PopularCards = ({value}) => {
+const PopularCard = ({value}) => {
       const imageRoot = 'https://image.tmdb.org/t/p/original'
 
   return (
@@ -36,4 +36,4 @@ const PopularCards = ({value}) => {
   )
 }
 
-export default PopularCards
+export default PopularCard

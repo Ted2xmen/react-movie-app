@@ -1,16 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import PopularCards from './cards/PopularCards'
+import PopularCard from './cards/PopularCard'
+import { populerMovieLimit } from '../features/AppSettings'
 
-const PopularMovies = () => {
-    const value = useSelector((state) => state.moviesReducer.populermovies)
+
+const PopularMovies = ({popular}) => {
 
   return (
     <div>
       <div>PopularMovies</div>
-      <div className="text-md gradient p-12 text-white flex">
-        {value?.results?.slice(0, 4).map((item, i) => (
-          <PopularCards value={item} key={i} />
+      <div className="text-md gradient flex p-12 text-white">
+        {popular?.results?.slice(0, populerMovieLimit).map((item, i) => (
+          <PopularCard value={item} key={i} />
         ))}
       </div>
     </div>

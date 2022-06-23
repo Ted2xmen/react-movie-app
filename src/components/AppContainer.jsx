@@ -1,49 +1,37 @@
 import Nav from '../pages/Nav'
-import Header from './Header'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import MovieApi from '../features/apis/MovieApi'
-import { useDispatch } from 'react-redux'
-import {
-  upComingMovies,
-  populerMovies,
-} from '../redux/movies/movieSlice'
 import UpComingMovies from './UpComingMovies'
 import PopularMovies from './PopularMovies'
 
-
 const AppContainer = () => {
        
-
+  const [popular, setPopular] = useState([])
+  const [upcoming, setUpcoming] = useState([])
   const apiKey = process.env.REACT_APP_MOVIE
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchUpComing = async () => {
       const response = await MovieApi.get(
         `movie/upcoming?api_key=${apiKey}&page=1`
       )
-      dispatch(upComingMovies(response.data))
+      setPopular(response.data)
     }
     const fetchNowPlaying = async () => {
       const response = await MovieApi.get(
         `movie/popular?api_key=${apiKey}&page=1`
       )
-      dispatch(populerMovies(response.data))
+      setUpcoming(response.data)
     }
-    fetchMovies()
+    fetchUpComing()
     fetchNowPlaying()
-  }, [apiKey, dispatch])
+  }, [apiKey])
 
   return (
     <div className="mx-auto items-center justify-center pt-24 sm:h-full sm:w-full md:h-full md:w-full lg:mx-12 xl:mx-24">
       <Nav />
-      <Header />
-      <UpComingMovies />
-      <PopularMovies />
-
-      {/* {data.map((item) => (
-        <img src={imageRoot + item.file_path} alt="" />
-      ))} */}
+      <UpComingMovies upcoming={upcoming}  />
+      <PopularMovies popular={popular} />
     </div>
   )
 }
