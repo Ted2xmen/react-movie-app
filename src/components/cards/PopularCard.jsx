@@ -7,11 +7,10 @@ const PopularCard = ({ value }) => {
     <div className="m-1">
       <div className="flex   rounded-lg border border-gray-100 bg-slate-500 shadow-sm">
         <img
-          className="h-42 w-24 object-cover hover:scale-150 transition hover:rounded-lg"
+          className="h-42 w-24 object-cover hover:scale-150 transition hover:rounded-lg "
           src={imageRoot + value.poster_path}
           alt=""
         />
-
         <div className=" p-2">
           <h5 className="text-sm font-bold">{value.original_title}.</h5>
           <div className="mt-3">
