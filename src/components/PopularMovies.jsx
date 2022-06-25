@@ -7,8 +7,9 @@ const PopularMovies = ({popular}) => {
 
   return (
     <div>
-      <div>PopularMovies</div>
-      <div className="text-md gradient flex p-12 text-white">
+      <div className="text-md  grid grid-cols-1 p-12 text-white sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <h3 className="m-1 p-2 block text-2xl bg-slate-700 rounded-lg font-bold">Popular Movies</h3>
+
         {popular?.results?.slice(0, populerMovieLimit).map((item, i) => (
           <PopularCard value={item} key={i} />
         ))}
