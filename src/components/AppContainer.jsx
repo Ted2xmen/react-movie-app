@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import MovieApi from '../features/apis/MovieApi'
 import UpComingMovies from './UpComingMovies'
 import PopularMovies from './PopularMovies'
-import TrendingTV from './TrendingTV'
+import Trending from './Trending'
 import PopularPersons from './PopularPersons'
 
 const AppContainer = () => {
@@ -11,6 +11,7 @@ const AppContainer = () => {
   const [upcoming, setUpcoming] = useState([])
   const [trendingtv, setTrendingtv] = useState([])
   const [popularpersons, setPopularPersons] = useState([])
+  const [trendingmovie, setTrendingmovie] = useState([])
   const apiKey = process.env.REACT_APP_MOVIE
 
   useEffect(() => {
@@ -26,6 +27,14 @@ const AppContainer = () => {
         )
         setTrendingtv(response.data)
       }
+
+       const fetchTrendingMovie = async () => {
+         const response = await MovieApi.get(
+           `trending/movie/week?api_key=${apiKey}`
+         )
+         setTrendingmovie(response.data)
+       }
+
        const fetchPopularPersons = async () => {
          const response = await MovieApi.get(
            `person/popular/?api_key=${apiKey}`
@@ -39,6 +48,7 @@ const AppContainer = () => {
       )
       setPopular(response.data)
     }
+    fetchTrendingMovie()
     fetchUpComing()
     fetchPopularPersons()
     fetchTrending()
@@ -46,11 +56,14 @@ const AppContainer = () => {
   }, [apiKey])
 
   return (
-    <div className="mx-auto items-center justify-center pt-24 sm:h-full sm:w-full md:h-full md:w-full lg:mx-12 xl:mx-24">
+    <div className="mx-auto items-center justify-center pt-24 sm:h-full sm:w-full md:h-full md:w-full lg:mx-12 xl:mx-24 ">
       <Nav />
-      {/* <TrendingTV trendingtv={trendingtv} /> */}
-      <TrendingTV trendingtv={trendingtv} />
+      <div className="flex justify-between">
+        <Trending title="Trending TV Show" trending={trendingtv} />
+        <Trending title="Trending Movies" trending={trendingmovie} />
+      </div>
       <PopularPersons popularpersons={popularpersons} />
+
       <PopularMovies popular={popular} />
       <UpComingMovies upcoming={upcoming} />
     </div>

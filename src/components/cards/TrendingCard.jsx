@@ -13,11 +13,13 @@ const TrendingCard = ({value}) => {
         />
         <div className=" p-2">
           <h5 className="text-sm font-bold">
-            {value.name}. ( {value.media_type} ){' '}
+            {value.name || value.original_title}. ( {value.media_type} )
           </h5>
           <div className="mt-3">
             <span className="text-xs "> {value.overview.slice(0, 100)} </span>
-            <span className="block text-xs">🗓️ {value.first_air_date} </span>
+            <span className="block text-xs">
+              🗓️ {value.first_air_date || value.release_date}
+            </span>
           </div>
         </div>
       </div>
