@@ -1,11 +1,12 @@
-import React from 'react'
+import { Link } from "react-router-dom"
+
 
 const PersonCard = ({ value }) => {
   const imageRoot = 'https://image.tmdb.org/t/p/original'
 
   return (
-    <div className=''>
-      <div className="flex rounded-lg hover:bg-slate-700 hover:text-white transition-all shadow-lg p-1">
+    <div className="">
+      <div className="flex rounded-lg p-1 shadow-lg transition-all hover:bg-slate-700 hover:text-white">
         <div>
           <img
             className="h-36 rounded-lg object-contain"
@@ -13,9 +14,21 @@ const PersonCard = ({ value }) => {
             alt=""
           />
         </div>
-        <h3 className='m-2'> {value?.name} </h3>
+        <div>
+          <h3 className="m-2 text-lg font-bold">
+          {value?.name}
+        </h3> 
+         <div className="space-y-2"> {value?.known_for.map((item, i) => {
+        return (
+          <p className="ml-3 truncate text-xs">
+            <Link to={`/details/${item.id}`}>{item.title}</Link>
+          </p>
+        )
+      })} </div>
+        </div>
+        
 
-        {/* <h3>known for {value?.results?.known_for.original_title} </h3> */}
+    
       </div>
     </div>
   )
