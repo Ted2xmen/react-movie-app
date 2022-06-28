@@ -3,28 +3,29 @@ import Nav from './Nav'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import MovieApi from '../features/apis/MovieApi'
-
+import { Helmet } from 'react-helmet'
 
 const DetailsPage = () => {
-
   const [detail, setDetail] = useState({})
-    const apiKey = process.env.REACT_APP_MOVIE
-      const imageRoot = 'https://image.tmdb.org/t/p/original'
+  const apiKey = process.env.REACT_APP_MOVIE
+  const imageRoot = 'https://image.tmdb.org/t/p/original'
 
+  const { id } = useParams()
 
-const { id } = useParams()
-
-useEffect(() => {
-const fetchDetails = async () => {
-  const response = await MovieApi.get(`movie/${id}?api_key=${apiKey}`)
-  setDetail(response.data)
-  console.log(response.data)
-}
-fetchDetails()
-}, [apiKey, id])
+  useEffect(() => {
+    const fetchDetails = async () => {
+      const response = await MovieApi.get(`movie/${id}?api_key=${apiKey}`)
+      setDetail(response.data)
+      console.log(response.data)
+    }
+    fetchDetails()
+  }, [apiKey, id])
 
   return (
     <div className="pb-24">
+      <Helmet>
+        <title>{detail.original_title}</title>
+      </Helmet>
       <div
         className="h-screen w-full bg-cover bg-top opacity-30 "
         style={{
@@ -40,7 +41,7 @@ fetchDetails()
             {detail.vote_average}
           </span>
         </h3>
-        <div className="flex space-x-6 mx-auto justify-center  ">
+        <div className="mx-auto flex justify-center space-x-6  ">
           {detail?.genres?.map((genre) => {
             return (
               <p

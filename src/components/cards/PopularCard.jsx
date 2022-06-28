@@ -58,8 +58,8 @@ const PopularCard = ({ value, loading }) => {
               </div>
               <button
                 onClick={() => navigate(`/details/${value.id}`)}
-                className="m-2 bg-red-700 p-1 text-xs">
-                read more {id}{' '}
+                className="mt-5 items-start bg-red-700 p-1 text-xs">
+                Details 
               </button>
             </div>
           </div>
