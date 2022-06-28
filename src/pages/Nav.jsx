@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
-    <div className="flex space-x-4 ml-6">
-      <h3 className="font-bold">Menu</h3>
-      <Link to="/">Home </Link>
-      <Link to="/about"> About</Link>
+    <div className="ml-6 flex space-x-6 text-2xl text-white">
+      <Link to="/">🏠 </Link>
+      <Link to="/about"> 📨</Link>
     </div>
   )
 }

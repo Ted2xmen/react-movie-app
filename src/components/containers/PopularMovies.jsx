@@ -12,6 +12,7 @@ const PopularMovies = ({ loading }) => {
         `movie/popular?api_key=${apiKey}&page=1`
       )
       setPopular(response.data)
+      console.log(response.data)
     }
     fetchPopular()
   }, [])
