@@ -1,10 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const UpComingCard = ({ value, loading }) => {
   const imageRoot = 'https://image.tmdb.org/t/p/original'
+
+    const navigate = useNavigate()
+
 
 
   const upcomingSkeleton = (
@@ -38,7 +42,8 @@ const UpComingCard = ({ value, loading }) => {
       ) : (
         <div className="m-2 h-full space-x-4 space-y-3 overflow-hidden rounded-lg bg-slate-400 bg-opacity-40 backdrop-blur-lg">
           <img
-            className="h-full w-full object-contain brightness-50 hover:brightness-100 cursor-pointer"
+            onClick={() => navigate(`/details/${value.id}`)}
+            className="h-full w-full cursor-pointer object-contain brightness-50 hover:brightness-100"
             src={imageRoot + value.poster_path}
             alt={value.original_title}
           />
@@ -48,7 +53,7 @@ const UpComingCard = ({ value, loading }) => {
               {value.original_title}
             </h5>
 
-            <div className="my-4 flex justify-start space-x-3 items-center">
+            <div className="my-4 flex items-center justify-start space-x-3">
               <span className="rounded-md bg-red-700 px-1 text-sm text-white">
                 {value.vote_average}
               </span>

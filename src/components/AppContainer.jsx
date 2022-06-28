@@ -42,8 +42,8 @@ const AppContainer = () => {
       <div className="xs:space-y-4 m-3 grid grid-cols-1 items-center justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
         <Trending
           loading={loading}
-          title="Trending TV Show"
-          trending={trendingtv}
+          title="Trending Movie's"
+          trending={trendingmovie}
         />
         <PopularPersons title="People's" loading={loading} />
       </div>
