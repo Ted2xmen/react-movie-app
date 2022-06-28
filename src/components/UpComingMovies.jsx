@@ -44,7 +44,7 @@ const UpComingMovies = ({ upcoming, loading }) => {
   return (
     <div>
       <div className="text-md items-center justify-center p-12 text-black">
-        <h3 className="m-2 text-2xl font-bold">Upcoming Movies</h3>
+        <span className="m-2 text-2xl font-bold bg-gray-300 p-1 rounded-lg">Upcoming Movies</span>
         <Slider {...settings}>
           {upcoming?.results?.map((item, i) => (
             <UpComingCard loading={loading} key={item.id} value={item} />

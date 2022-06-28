@@ -12,8 +12,13 @@ const PopularCard = ({ value, loading }) => {
 
   const popularSkeleton = (
     <div className="m-1">
-      <div className="flex rounded-lg border border-gray-100 bg-slate-500 shadow-sm">
-        <Skeleton className='m-2'  height={100} width={60} containerClassName="avatar-skeleton" />
+      <div className="flex rounded-lg bg-slate-500 bg-opacity-20  shadow-sm backdrop-blur-lg">
+        <Skeleton
+          className="m-2"
+          height={100}
+          width={60}
+          containerClassName="avatar-skeleton"
+        />
         <div className=" p-2">
           <h5 className="text-sm font-bold">
             <p>
@@ -36,9 +41,11 @@ const PopularCard = ({ value, loading }) => {
 
   return (
     <>
-     {loading ?  popularSkeleton : 
+      {loading ? (
+        popularSkeleton
+      ) : (
         <div className="m-1">
-          <div className="flex rounded-lg border border-gray-100 bg-slate-500 shadow-sm">
+          <div className="flex rounded-lg bg-slate-500 bg-opacity-20 shadow-sm backdrop-blur-lg">
             <img
               className="h-42 w-24 object-cover transition hover:scale-150 hover:rounded-lg "
               src={imageRoot + poster_path}
@@ -56,7 +63,8 @@ const PopularCard = ({ value, loading }) => {
               </button>
             </div>
           </div>
-        </div>}
+        </div>
+      )}
     </>
   )
 }
