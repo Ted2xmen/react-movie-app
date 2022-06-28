@@ -45,7 +45,7 @@ const PopularCard = ({ value, loading }) => {
         popularSkeleton
       ) : (
         <div className="m-1">
-          <div className="flex rounded-lg bg-slate-500 bg-opacity-20 shadow-sm backdrop-blur-lg">
+          <div className="flex rounded-lg bg-slate-400 bg-opacity-20 shadow-sm backdrop-blur-lg">
             <img
               className="h-42 w-24 object-cover transition hover:scale-150 hover:rounded-lg "
               src={imageRoot + poster_path}
