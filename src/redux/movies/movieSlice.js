@@ -5,7 +5,7 @@ export const movieSlice = createSlice({
   initialState: {
     movies: [],
     upcomingmovies: [],
-    populermovies: [],
+    populermovies: []
   },
   reducers: {
     addMovie: (state, { payload }) => {

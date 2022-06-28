@@ -1,11 +1,40 @@
 import React from 'react'
 import moment from 'moment'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
-const UpComingCard = ({ value }) => {
+const UpComingCard = ({ value, loading }) => {
   const imageRoot = 'https://image.tmdb.org/t/p/original'
 
-  return (
+
+  const upcomingSkeleton = (
     <div className="m-2 h-full space-x-4 space-y-3 overflow-hidden rounded-lg border-2 border-gray-600 bg-slate-300">
+      <Skeleton
+        className="m-2"
+        height={280}
+        width={195}
+        containerClassName="avatar-skeleton"
+      />
+
+      <div className="mt-3 h-full">
+        <h5 className="truncate text-sm font-bold ">
+          <Skeleton width={140} />
+        </h5>
+        <span className="rounded-lg p-1 text-sm">
+          <Skeleton width={100} />
+        </span>
+        <div className="flex">
+          <Skeleton count={1} />
+        </div>
+      </div>
+    </div>
+  )
+
+
+  return (
+    <>
+    {loading ? upcomingSkeleton : 
+     <div className="m-2 h-full space-x-4 space-y-3 overflow-hidden rounded-lg border-2 border-gray-600 bg-slate-300">
       <img
         className="h-full w-full object-contain brightness-50 hover:brightness-100"
         src={imageRoot + value.poster_path}
@@ -13,7 +42,7 @@ const UpComingCard = ({ value }) => {
       />
 
       <div className="mt-3 h-full">
-        <h5 className="truncate text-sm font-bold ">{value.original_title}.</h5>
+        <h5 className="truncate text-sm font-bold ">{value.original_title} .</h5>
         <span className="rounded-lg bg-orange-500 p-1 text-sm">
           {moment(value.release_date).endOf('day').fromNow()}
         </span>
@@ -21,7 +50,10 @@ const UpComingCard = ({ value }) => {
           Watch {value.vote_average > 7 ? <div> 🔥</div> : <div> 😓</div>}
         </div>
       </div>
-    </div>
+    </div>}
+    
+    </>
+   
   )
 }
 

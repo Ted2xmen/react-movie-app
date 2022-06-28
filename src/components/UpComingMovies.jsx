@@ -6,7 +6,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const UpComingMovies = ({ upcoming }) => {
+const UpComingMovies = ({ upcoming, loading }) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -47,7 +47,7 @@ const UpComingMovies = ({ upcoming }) => {
         <h3 className="m-2 text-2xl font-bold">Upcoming Movies</h3>
         <Slider {...settings}>
           {upcoming?.results?.map((item, i) => (
-            <UpComingCard key={item.id} value={item} />
+            <UpComingCard loading={loading} key={item.id} value={item} />
           ))}
         </Slider>
       </div>

@@ -23,8 +23,8 @@ const Trending = ({ trending, title }) => {
       <h3 className="m-1 rounded-lg text-2xl font-bold">{title} (Weekly)</h3>
       <div className="">
         <Slider {...settings}>
-          {trending?.results?.map((item, i) => (
-            <TrendingCard value={item} key={i} />
+          {trending?.results?.map((item) => (
+            <TrendingCard value={item} key={item.id} />
           ))}
         </Slider>
       </div>
