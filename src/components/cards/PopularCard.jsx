@@ -51,7 +51,7 @@ const PopularCard = ({ value, loading }) => {
               src={imageRoot + poster_path}
               alt={original_title}
             />
-            <div className=" p-2">
+            <div className="p-2">
               <h5 className="text-sm font-bold">{original_title}</h5>
               <div className="mt-3">
                 <span className="text-xs">🗓️ {value.release_date} </span>

@@ -12,15 +12,14 @@ const PopularMovies = ({ loading }) => {
         `movie/popular?api_key=${apiKey}&page=1`
       )
       setPopular(response.data)
-      console.log(response.data)
     }
     fetchPopular()
   }, [])
 
   return (
     <div>
-      <div className="text-md gap-2  grid grid-cols-1 p-12 text-white sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <h3 className="m-2 shadow-red-600 shadow-sm flex items-center justify-start rounded-lg bg-slate-400 bg-opacity-30 p-2 text-3xl font-bold backdrop-blur-lg ">
+      <div className="text-md grid  grid-cols-1 gap-2 p-12 text-white sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+        <h3 className="m-2 flex items-center justify-start rounded-lg bg-slate-400 bg-opacity-30 p-2 text-3xl font-bold shadow-sm shadow-red-600 backdrop-blur-lg">
           Popular Movies
         </h3>
         {popular?.results?.slice(0, populerMovieLimit).map((item, i) => (

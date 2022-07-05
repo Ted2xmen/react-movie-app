@@ -7,9 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const UpComingCard = ({ value, loading }) => {
   const imageRoot = 'https://image.tmdb.org/t/p/original'
 
-    const navigate = useNavigate()
-
-
+  const navigate = useNavigate()
 
   const upcomingSkeleton = (
     <div className="m-2 h-full space-x-4 space-y-3 overflow-hidden rounded-lg border-2 border-gray-600 bg-slate-300">
@@ -34,16 +32,15 @@ const UpComingCard = ({ value, loading }) => {
     </div>
   )
 
-
   return (
     <>
       {loading ? (
         upcomingSkeleton
       ) : (
-        <div className="m-2 h-full space-x-4 space-y-3 overflow-hidden rounded-lg bg-slate-400 bg-opacity-40 backdrop-blur-lg">
+        <div className="m-4 h-full space-x-4 space-y-3 overflow-hidden rounded-lg bg-slate-400 bg-opacity-40 p-2 backdrop-blur-lg">
           <img
             onClick={() => navigate(`/details/${value.id}`)}
-            className="h-full w-full cursor-pointer object-contain brightness-50 hover:brightness-100"
+            className="h-full w-full cursor-pointer rounded-lg object-contain shadow-md brightness-50 hover:brightness-100"
             src={imageRoot + value.poster_path}
             alt={value.original_title}
           />

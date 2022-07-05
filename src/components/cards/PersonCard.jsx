@@ -6,31 +6,31 @@ const PersonCard = ({ value }) => {
 
   return (
     <div>
-      <div className="flex rounded-lg p-1 shadow-lg transition-all hover:bg-slate-800 hover:text-white bg-opacity-20">
+      <div className="flex rounded-lg bg-slate-500 bg-opacity-20 p-1 shadow shadow-red-800 transition-all  hover:bg-slate-700 hover:text-white">
         <div>
           <img
-            className="h-36 rounded-lg object-contain"
+            className="h-28 rounded-lg object-contain"
             src={imageRoot + value?.profile_path}
             alt=""
           />
         </div>
         <div className="group">
-          <h3 className="m-2 text-lg font-bold text-white  hover:text-red-500">
-          {value?.name}
-        </h3> 
-         <div className="space-y-2"> {value?.known_for.map((item) => {
-        return (
-          <p
-            className="ml-3 truncate text-sm cursor-pointer text-gray-400 hover:text-red-600"
-            key={item.id}>
-            <Link to={`/details/${item.id}`}>{item.title}</Link>
-          </p>
-        )
-      })} </div>
+          <h3 className="m-2 text-sm font-bold text-white  hover:text-red-500">
+            {value?.name}
+          </h3>
+          <div className="space-y-1">
+            {' '}
+            {value?.known_for.map((item) => {
+              return (
+                <p
+                  className="ml-3 cursor-pointer text-xs text-gray-400 hover:text-red-600 sm:text-ellipsis"
+                  key={item.id}>
+                  <Link to={`/details/${item.id}`}>{item.title}</Link>
+                </p>
+              )
+            })}
+          </div>
         </div>
-        
-
-    
       </div>
     </div>
   )
