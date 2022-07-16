@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import MovieApi, { apiKey } from '../../features/apis/MovieApi'
 import UpComingCard from '../cards/UpcomingCard'
 
-
 const UpComingMovies = ({ loading }) => {
   const [upcoming, setUpcoming] = useState([])
 

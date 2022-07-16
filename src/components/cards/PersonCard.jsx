@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-
+import { Link } from 'react-router-dom'
 
 const PersonCard = ({ value }) => {
   const imageRoot = 'https://image.tmdb.org/t/p/original'
@@ -19,7 +18,6 @@ const PersonCard = ({ value }) => {
             {value?.name}
           </h3>
           <div className="space-y-1">
-            {' '}
             {value?.known_for.map((item) => {
               return (
                 <p
